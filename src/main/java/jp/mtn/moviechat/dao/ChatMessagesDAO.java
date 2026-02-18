@@ -19,7 +19,7 @@ public class ChatMessagesDAO {
     private final String DB_USER = "movie_user";
     private final String DB_PASS = "password";
 
-    public void create(ChatMessage chatMessage) {
+    public void save(ChatMessage chatMessage) {
         // JDBCドライバ読み込み
         try {
             Class.forName("org.mariadb.jdbc.Driver");

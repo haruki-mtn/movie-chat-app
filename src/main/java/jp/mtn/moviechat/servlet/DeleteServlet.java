@@ -23,7 +23,7 @@ public class DeleteServlet extends HttpServlet {
 
         // アカウント削除処理の実行
         UserLogic bo = new UserLogic();
-        boolean result = bo.delete(user);
+        boolean result = bo.deleteUser(user);
 
 		// 登録処理の成否によって処理を分岐
         if (result) {

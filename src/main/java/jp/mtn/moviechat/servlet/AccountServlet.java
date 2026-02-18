@@ -24,11 +24,11 @@ public class AccountServlet extends HttpServlet {
 
 		// ブックマーク数を取得
 		BookmarkLogic bookmarkLogic = new BookmarkLogic();
-		int bookmarkCount = bookmarkLogic.getBookmarkCount(user.getUserId());
+		int bookmarkCount = bookmarkLogic.countBookmarks(user.getUserId());
 
 		// 総投稿数を取得
 		ChatLogic chatLogic = new ChatLogic();
-		int messagesCount = chatLogic.getMessagesCount(user.getUserId());
+		int messagesCount = chatLogic.countMessages(user.getUserId());
 
 		// リクエストスコープにブックマーク数と総投稿数を保存
 		request.setAttribute("bookmarkCount", bookmarkCount);

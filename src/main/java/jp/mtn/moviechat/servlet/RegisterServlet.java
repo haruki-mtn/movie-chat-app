@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 		// 登録処理の実行
 		Register register = new Register(name, mail, pass);
 		UserLogic bo = new UserLogic();
-		boolean result = bo.register(register);
+		boolean result = bo.registerUser(register);
 
 		// 登録処理の成否によって処理を分岐
 		if (result) {

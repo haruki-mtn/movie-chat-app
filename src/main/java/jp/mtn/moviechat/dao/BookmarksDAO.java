@@ -17,7 +17,7 @@ public class BookmarksDAO {
     private final String DB_USER = "movie_user";
     private final String DB_PASS = "password";
 
-    public boolean create(Bookmark bookmark) {
+    public boolean save(Bookmark bookmark) {
         // JDBCドライバ読み込み
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -43,7 +43,7 @@ public class BookmarksDAO {
         }
     }
 
-    public boolean delete(int userId, int movieId) {
+    public boolean deleteByUserIdAndMoiveId(int userId, int movieId) {
         // JDBCドライバ読み込み
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -69,7 +69,7 @@ public class BookmarksDAO {
         }
     }
 
-    public boolean multipleDelete(int userId, List<Integer> movieIdList) {
+    public boolean deleteAllByUserIdAndMovieIdList(int userId, List<Integer> movieIdList) {
         // JDBCドライバ読み込み
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -160,7 +160,7 @@ public class BookmarksDAO {
         return count;
     }
 
-    public boolean exists(int userId, int movieId) {
+    public boolean existsByUserIdAndMovieId(int userId, int movieId) {
         // JDBCドライバ読み込み
         try {
             Class.forName("org.mariadb.jdbc.Driver");

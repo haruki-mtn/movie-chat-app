@@ -27,7 +27,7 @@ public class BookmarkServlet extends HttpServlet {
 
 		// ブックマークされた映画IDをリストで取得
 		BookmarkLogic bo = new BookmarkLogic();
-		List<Integer> movieIdList = bo.getMovieList(user.getUserId());
+		List<Integer> movieIdList = bo.getBookmarkedMovieIds(user.getUserId());
 
 		// リクエストスコープにブックマークされた映画IDリストを保存
 		request.setAttribute("movieIdList", movieIdList);
@@ -61,11 +61,11 @@ public class BookmarkServlet extends HttpServlet {
 
 			// moviesテーブルを保証
 			MovieLogic movieLogic = new MovieLogic();
-			movieLogic.findOrCreate(movieId, movieTitle);
+			movieLogic.findOrCreateMovie(movieId, movieTitle);
 
 			// ブックマーク追加処理の実行
 			BookmarkLogic bookmarkLogic = new BookmarkLogic();
-			bookmarkLogic.add(user.getUserId(), movieId);
+			bookmarkLogic.addBookmark(user.getUserId(), movieId);
 			return;
 
 		// 映画詳細のブックマークボタンからの削除の場合の処理
@@ -78,7 +78,7 @@ public class BookmarkServlet extends HttpServlet {
 
 			// ブックマーク削除処理の実行
 			BookmarkLogic bo = new BookmarkLogic();
-			bo.remove(user.getUserId(), movieId);
+			bo.removeBookmark(user.getUserId(), movieId);
 			return;
 
 		// ブックマークページからの一括削除の場合の処理
@@ -101,7 +101,7 @@ public class BookmarkServlet extends HttpServlet {
 
 			// ブックマーク一括削除処理の実行
 			BookmarkLogic bo = new BookmarkLogic();
-			bo.multipleRemove(user.getUserId(), movieIdList);
+			bo.removeBookmarks(user.getUserId(), movieIdList);
 		}
 
 

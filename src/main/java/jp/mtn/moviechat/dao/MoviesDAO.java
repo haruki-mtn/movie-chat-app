@@ -14,7 +14,7 @@ public class MoviesDAO {
     private final String DB_USER = "movie_user";
     private final String DB_PASS = "password";
 
-    public Movie create(int movieId, String movieTitle) {
+    public Movie save(int movieId, String movieTitle) {
 
         Movie movie = null;
 

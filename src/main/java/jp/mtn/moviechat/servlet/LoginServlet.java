@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 		// ログイン処理の実行
 		Login login = new Login(mail, pass);
 		UserLogic bo = new UserLogic();
-		User user = bo.login(login);
+		User user = bo.authenticate(login);
 
 		if (user != null) {
 			// セッションスコープにログインユーザー（Userオブジェクトのインスタンス）を保存

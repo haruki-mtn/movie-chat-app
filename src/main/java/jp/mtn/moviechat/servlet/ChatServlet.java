@@ -72,14 +72,14 @@ public class ChatServlet extends HttpServlet {
 
 			// 映画登録処理の実行
 			MovieLogic movieLogic = new MovieLogic();
-			Movie movie = movieLogic.findOrCreate(movieId, movieTitle);
+			Movie movie = movieLogic.findOrCreateMovie(movieId, movieTitle);
 
 			// セッションスコープにMovieオブジェクトのインスタンスを保存
 			session.setAttribute("movie", movie);
 
 			// チャットルーム処理の実行
 			ChatLogic chatLogic = new ChatLogic();
-			ChatRoom chatRoom = chatLogic.findOrCreate(movie.getMovieId());
+			ChatRoom chatRoom = chatLogic.findOrCreateChatRoom(movie.getMovieId());
 
 			// セッションスコープにChatRoomオブジェクトのインスタンスを保存
 			session.setAttribute("chatRoom", chatRoom);

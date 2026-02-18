@@ -14,7 +14,7 @@ public class ChatRoomsDAO {
     private final String DB_USER = "movie_user";
     private final String DB_PASS = "password";
 
-    public ChatRoom create(int movieId) {
+    public ChatRoom save(int movieId) {
 
         ChatRoom chatRoom = null;
 

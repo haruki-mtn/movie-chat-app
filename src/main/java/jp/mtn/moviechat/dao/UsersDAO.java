@@ -18,7 +18,7 @@ public class UsersDAO {
     private final String DB_USER = "movie_user";
     private final String DB_PASS = "password";
 
-    public boolean create(Register register) {
+    public boolean save(Register register) {
         // JDBCドライバ読み込み
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -46,7 +46,7 @@ public class UsersDAO {
         }
     }
 
-    public User findByLogin(Login login) {
+    public User findByMail(Login login) {
 
         User user = null;
 

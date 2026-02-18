@@ -3,17 +3,17 @@ package jp.mtn.moviechat.model;
 import jp.mtn.moviechat.dao.UsersDAO;
 
 public class UserLogic {
-    public boolean register(Register register) {
+    public boolean registerUser(Register register) {
         UsersDAO dao = new UsersDAO();
-        return dao.create(register);
+        return dao.save(register);
     }
 
-    public User login(Login login) {
+    public User authenticate(Login login) {
         UsersDAO dao = new UsersDAO();
-        return dao.findByLogin(login);
+        return dao.findByMail(login);
     }
 
-    public boolean delete(User user) {
+    public boolean deleteUser(User user) {
         UsersDAO dao = new UsersDAO();
         return dao.deleteByUserId(user.getUserId());
     }

@@ -5,37 +5,37 @@ import java.util.List;
 import jp.mtn.moviechat.dao.BookmarksDAO;
 
 public class BookmarkLogic {
-    public boolean add(int userId, int movieId) {
+    public boolean addBookmark(int userId, int movieId) {
         BookmarksDAO dao = new BookmarksDAO();
-        if (dao.exists(userId, movieId)) {
+        if (dao.existsByUserIdAndMovieId(userId, movieId)) {
             return false;
         }
         Bookmark bookmark = new Bookmark(userId, movieId);
-        return dao.create(bookmark);
+        return dao.save(bookmark);
     }
 
-    public boolean remove(int userId, int movieId) {
+    public boolean removeBookmark(int userId, int movieId) {
         BookmarksDAO dao = new BookmarksDAO();
-        return dao.delete(userId, movieId);
+        return dao.deleteByUserIdAndMoiveId(userId, movieId);
     }
 
-    public boolean multipleRemove(int userId, List<Integer> movieIdList) {
+    public boolean removeBookmarks(int userId, List<Integer> movieIdList) {
         BookmarksDAO dao = new BookmarksDAO();
-        return dao.multipleDelete(userId, movieIdList);
+        return dao.deleteAllByUserIdAndMovieIdList(userId, movieIdList);
     }
 
-    public List<Integer> getMovieList(int userId) {
+    public List<Integer> getBookmarkedMovieIds(int userId) {
         BookmarksDAO dao = new BookmarksDAO();
         return dao.findByUserId(userId);
     }
 
-    public int getBookmarkCount(int userId) {
+    public int countBookmarks(int userId) {
         BookmarksDAO dao = new BookmarksDAO();
         return dao.countByUserId(userId);
     }
 
     public boolean isBookmarked(int userId, int movieId) {
         BookmarksDAO dao = new BookmarksDAO();
-        return dao.exists(userId, movieId);
+        return dao.existsByUserIdAndMovieId(userId, movieId);
     }
 }
